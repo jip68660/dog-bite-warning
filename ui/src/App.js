@@ -2,6 +2,7 @@ import React from 'react';
 import Map from './components/Map'
 import InputFormat from './components/formats/InputFormat'
 import ButtonFormat from './components/formats/ButtonFormat'
+import './App.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -28,13 +29,11 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <div>
-          DOG-WARNING
-        </div>
-        <div>
+        <div className="caution"><a>CAUTION</a> DOG WILL BITE</div>
+        <div className="userInput">
           <InputFormat 
             className={ "addressInput "}
-            placeholder={ "Please type Address" }
+            placeholder={ "Please type address" }
             value={ this.state.address }
             name={ "address" }
             handleChange = { this.handleChange }
@@ -45,7 +44,7 @@ class App extends React.Component {
             handleSearch={ this.handleSearch }
           />
         </div>
-        <Map />
+        {/* <Map /> */}
       </div>
     );
   }
