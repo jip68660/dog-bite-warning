@@ -1,4 +1,5 @@
 import React from 'react';
+import Map from './components/Map'
 import InputFormat from './components/formats/InputFormat'
 import ButtonFormat from './components/formats/ButtonFormat'
 
@@ -44,6 +45,7 @@ class App extends React.Component {
             handleSearch={ this.handleSearch }
           />
         </div>
+        <Map />
       </div>
     );
   }
