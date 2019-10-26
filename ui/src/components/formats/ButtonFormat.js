@@ -4,8 +4,7 @@ const ButtonFormat = (props) => {
     return(
         <button
             className={ props.className }
-            // onClick={ props.handleClick }  
-            onClick={ () => {} }  
+            onClick={ props.handleSearch }  
         >
         { props.buttonValue }
         </button>

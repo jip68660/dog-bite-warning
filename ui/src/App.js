@@ -10,11 +10,17 @@ class App extends React.Component {
       address: ""
     }
     this.handleChange = this.handleChange.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
   handleChange = (event) => {
     this.setState({
       address: event.target.value
+    });
+  }
+  handleSearch = (event) => {
+    this.setState({
+      address: ""
     });
   }
 
@@ -34,9 +40,8 @@ class App extends React.Component {
           />
           <ButtonFormat 
             className={ "button search" }
-            buttonValue={ "Search" }
-            
-            // handleClick={ }
+            buttonValue={ "Search" }            
+            handleSearch={ this.handleSearch }
           />
         </div>
       </div>
