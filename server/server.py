@@ -21,3 +21,6 @@ def getDogCount():
                  count += 1 
     return jsonify(dogCount = count)
 
+if __name__ == '__main__':
+    app.run()
+
