@@ -1,13 +1,12 @@
 import React from 'react';
-import Map from './components/Map'
-import InputFormat from './components/formats/InputFormat'
-import ButtonFormat from './components/formats/ButtonFormat'
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Home from './components/Home';
+import Map from './components/Map';
 import './App.css';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-
     this.state={
       address: ""
     }
@@ -28,24 +27,33 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="caution"><a>CAUTION</a> DOG WILL BITE</div>
-        <div className="userInput">
-          <InputFormat 
-            className={ "addressInput "}
-            placeholder={ "Please type address" }
-            value={ this.state.address }
-            name={ "address" }
-            handleChange = { this.handleChange }
+      <Router>
+        <div>
+          <Route 
+            path="/"
+            exact
+            render={() => {
+                return(
+                  <Home
+                    address={ this.state.address }
+                    handleChange={ this.handleChange }
+                    handleSearch={ this.handleSearch }
+                  />
+                );
+              }
+            } 
           />
-          <ButtonFormat 
-            className={ "button search" }
-            buttonValue={ "Search" }            
-            handleSearch={ this.handleSearch }
+          <Route 
+            path="/address"
+            render={() => {
+                return(
+                  <Map />
+                );
+              }
+            }
           />
         </div>
-        {/* <Map /> */}
-      </div>
+      </Router>
     );
   }
 }
