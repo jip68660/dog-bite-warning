@@ -16,9 +16,10 @@ def getDogCount():
          distance.append(address2.getDistance(c,i))
          distance.sort()
          count = 0
-         for num in distance[0:10]:
-             if num < 10:
-                 count += 1 
+    for num in distance[0:10]:
+        print(num)
+        if num < 3:
+           count += 1 
     return jsonify(dogCount = count)
 
 if __name__ == '__main__':

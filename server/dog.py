@@ -2,7 +2,7 @@ import loc
 import address
 
 # church ='1225 N Josey Ln, Carrollton, TX 75006'
-church = '2500 TX-121, Euless, TX 76039'
+church = '7650 McCallum Blvd, Dallas, TX, 75252'
 c = address.locate(church)
 
 dogLocations = loc.getDogLocation()
@@ -15,8 +15,10 @@ distance.sort()
 print(distance[0:10])
 count = 0 
 for num in distance[0:10]:
-    if num < 10:
+    print(num)
+    if num < 3:
         count += 1
+
 print(count)
 
 
