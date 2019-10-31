@@ -6,7 +6,9 @@ const ButtonFormat = (props) => {
             className={ props.className }
             onClick={ props.handleSearch }  
         >
+        <a href= { props.target }>
         { props.buttonValue }
+        </a>
         </button>
     );
 }

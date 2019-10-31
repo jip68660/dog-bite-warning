@@ -18,6 +18,7 @@ const Home = (props) => {
                 className={ "button search" }
                 buttonValue={ "Search" }            
                 handleSearch={ props.handleSearch }
+                target={ "/address" }
             />
             </div>
         </div>

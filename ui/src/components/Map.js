@@ -11,7 +11,7 @@ class Map extends React.Component {
             lat: 32.89,
             lng: -97.04
         },
-        zoom: 11
+        zoom: 13
     };
  
     render() {
@@ -23,9 +23,10 @@ class Map extends React.Component {
                     defaultZoom={ this.props.zoom }
                 >
                     <Marker
+                        class={ "dog" }
                         lat={ 32.897480 }
                         lng={ -97.040443 }
-                        name="User"
+                        name="dog"
                     />
                 </GoogleMapReact>
             </div>
