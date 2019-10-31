@@ -6,3 +6,6 @@
     background-image: url("../imgs/bark.png");
     background-size: cover;
 }
+.user{
+    border: 1px solid black;
+}

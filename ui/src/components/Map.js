@@ -8,15 +8,15 @@ class Map extends React.Component {
     }
     static defaultProps = {
         center: {
-            lat: 32.89,
+            lat: 31.89,
             lng: -97.04
         },
-        zoom: 13
+        zoom: 14
     };
  
     render() {
         return (
-            <div style={{ height: '80vh', width: '100%' }}>
+            <div style={{ margin: 'auto', height: '80vh', width: '90vw' }}>
                 <GoogleMapReact
                     bootstrapURLKeys={{ key: "AIzaSyAyL5y5X8IPLWPVil6qwDah5PAK9C80d-Q" }}
                     defaultCenter={ this.props.center }
@@ -24,7 +24,7 @@ class Map extends React.Component {
                 >
                     <Marker
                         class={ "dog" }
-                        lat={ 32.897480 }
+                        lat={ 31.897480 }
                         lng={ -97.040443 }
                         name="dog"
                     />
