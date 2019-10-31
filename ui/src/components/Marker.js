@@ -5,7 +5,6 @@ const Marker = (props) => {
     return (
         <div 
             className={`marker ${ props.class }`}
-            name={ props.name }
         >    
         </div>    
     );
