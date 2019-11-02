@@ -6,8 +6,7 @@ const AddressButton = (props) => {
     
     function handleDirect () {
         history.push("/address");
-        console.log(history);
-        props.handleSearch();
+        // console.log(history);
     }
 
     return(
