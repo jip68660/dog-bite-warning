@@ -49,7 +49,7 @@ def get_dog_coordinates():
             count += 1
 
     return jsonify(
-        targetCoordinate={'lat': coord[0], 'long': coord[1]},
+        targetCoordinate={'lat': target_coord[0], 'long': target_coord[1]},
         nearestCoordinates=nearest10,
     )
 
