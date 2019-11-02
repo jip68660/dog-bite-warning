@@ -26,6 +26,7 @@ def get_distances(target_coord, dog_coordinates):
 def get_dog_coordinates():
     address = request.args.get('address')
     target_coord = googlegeo.locate(address)
+    target_coord = (target_coord[0], target_coord[1])
 
     dog_coordinates = incident.get_dog_coordinates()
 
