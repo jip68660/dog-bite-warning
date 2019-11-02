@@ -8,7 +8,7 @@ app = Flask(__name__)
 CORS(app)
 
 
-@lru_cache
+@lru_cache()
 def get_distances(target_coord, dog_coordinates):
     distances = []
     for idx, coord in enumerate(dog_coordinates):
