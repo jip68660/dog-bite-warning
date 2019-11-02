@@ -1,3 +1,4 @@
+from functools import lru_cache
 from flask import Flask, escape, request, jsonify
 from flask_cors import CORS
 import incident
@@ -7,16 +8,22 @@ app = Flask(__name__)
 CORS(app)
 
 
+@lru_cache
+def get_distances(target_coord, dog_coordinates):
+    distances = []
+    for idx, coord in enumerate(dog_coordinates):
+        distances.append((idx, googlegeo.get_distance(target_coord, coord)))
+    return distances
+
+
 @app.route('/')
 def get_dog_coordinates():
     address = request.args.get('address')
     target_coord = googlegeo.locate(address)
 
     dog_coordinates = incident.get_dog_coordinates()
-    distances = []
 
-    for idx, coord in enumerate(dog_coordinates):
-        distances.append((idx, googlegeo.get_distance(target_coord, coord)))
+    distances = get_distances(target_coord, dog_coordinates) 
 
     # Sort by the second value of each tuple.
     distances.sort(key=lambda x: x[1])
