@@ -17,9 +17,10 @@ class Map extends React.Component {
         const displayDogs = this.state.markers.map((marker, index) => {
             return(
                 <Marker 
-                    class={marker.class}
-                    lat={marker.lat}
-                    lng={marker.lng} 
+                    key={ index }
+                    class={ marker.class }
+                    lat={ marker.lat }
+                    lng={ marker.lng } 
                 />
             )
         });
