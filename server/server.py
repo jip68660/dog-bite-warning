@@ -1,4 +1,3 @@
-from functools import lru_cache
 from flask import Flask, escape, request, jsonify
 from flask_cors import CORS
 import incident
@@ -8,12 +7,19 @@ app = Flask(__name__)
 CORS(app)
 
 
-@lru_cache()
+cache = {}
+
+
 def get_distances(target_coord, dog_coordinates):
+    key = (target_coord, dog_coordinates)
+    if key in cache:
+        return cache[key]
     distances = []
     for idx, coord in enumerate(dog_coordinates):
         distances.append((idx, googlegeo.get_distance(target_coord, coord)))
-    return distances
+    cache[key] = distances
+    return cache[key]
+    
 
 
 @app.route('/')
