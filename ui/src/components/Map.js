@@ -7,7 +7,7 @@ class Map extends React.Component {
         super(props);
 
         this.state={
-            center: { lat: 31.89, lng: -97.04},
+            center: { lat: 31.89, lng: -97.04}, //"user" will be center
             zoom: 14,
             markers: [{class:"user", lat:31.89, lng:-97.04}, {class:"dog", lat:31.874, lng:-97.040}] //{"class", "lat", "lng", "level"}
         }

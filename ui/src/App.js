@@ -1,8 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Router, Route } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 import Home from './components/Home';
 import Map from './components/Map';
 import './App.css';
+
+const history = createBrowserHistory();
 
 class App extends React.Component {
   constructor(props) {
@@ -20,14 +23,15 @@ class App extends React.Component {
     });
   }
   handleSearch = (event) => {
-    this.setState({
-      address: ""
-    });
+    // this.setState({
+    //   address: ""
+    // });
+    console.log(this.state.address);
   }
 
   render() {
     return (
-      <Router>
+      <Router history={ history }>
         <div>
           <Route 
             path="/"

@@ -1,6 +1,7 @@
 import React from 'react';
 import InputFormat from './formats/InputFormat';
 import ButtonFormat from './formats/ButtonFormat';
+import AddressButton from './formats/AddressButton';
 
 const Home = (props) => {
     return(
@@ -14,11 +15,16 @@ const Home = (props) => {
                 name={ "address" }
                 handleChange = { props.handleChange }
             />
-            <ButtonFormat 
+            {/* <ButtonFormat 
                 className={ "button search" }
                 buttonValue={ "Search" }            
                 handleSearch={ props.handleSearch }
-                target={ "/address" }
+                // target={ "/address" }
+            /> */}
+            <AddressButton  
+                className={ "button search" }
+                buttonValue={ "Search" }
+                handleSearch={ props.handleSearch }
             />
             </div>
         </div>
