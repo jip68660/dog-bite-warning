@@ -1,27 +1,43 @@
 from flask import Flask, escape, request, jsonify
-import loc
-import address as address2
-
+import incident
+import googlegeo
 
 app = Flask(__name__)
 
-@app.route('/')
-def getDogCount():
-    address = request.args.get("address")
-    c = address2.locate(address)
-    dogLocations = loc.getDogLocation()
-    distance = []
 
-    for i in dogLocations:
-         distance.append(address2.getDistance(c,i))
-         distance.sort()
-         count = 0
-    for num in distance[0:10]:
-        print(num)
-        if num < 3:
-           count += 1 
-    return jsonify(dogCount = count)
+@app.route('/')
+def get_dog_coordinates():
+    address = request.args.get('address')
+    target_coord = googlegeo.locate(address)
+
+    dog_coordinates = incident.get_dog_coordinates()
+    distances = []
+
+    for idx, coord in enumerate(dog_coordinates):
+        distances.append((idx, googlegeo.get_distance(target_coord, coord)))
+
+    # Sort by the second value of each tuple.
+    distances.sort(key=lambda x: x[1])
+
+    # Get indices only.
+    indices = [dist[0] for dist in distances]
+
+    # Pick nearest 10.
+    count = 0
+    nearest10 = []
+    for idx in indices:
+        if count >= 10:
+            break
+        c = dog_coordinates[idx]
+        if c[0] or c[1] is not None:
+            nearest10.append({"lat": c[0], "long": c[1]})
+            count += 1
+
+    return jsonify(
+        targetCoordinate={'lat': coord[0], 'long': coord[1]},
+        nearestCoordinates=nearest10,
+    )
+
 
 if __name__ == '__main__':
     app.run()
-
