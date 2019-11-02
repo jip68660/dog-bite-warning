@@ -1,7 +1,7 @@
 import React from 'react';
-import InputFormat from './formats/InputFormat';
-import ButtonFormat from './formats/ButtonFormat';
-import AddressButton from './formats/AddressButton';
+import InputFormat from './InputFormat';
+import ButtonFormat from './ButtonFormat';
+import AddressButton from './AddressButton';
 
 const Home = (props) => {
     return(
