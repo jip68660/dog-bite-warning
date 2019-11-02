@@ -1,8 +1,10 @@
 from flask import Flask, escape, request, jsonify
+from flask_cors import CORS
 import incident
 import googlegeo
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route('/')
