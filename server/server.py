@@ -11,7 +11,7 @@ cache = {}
 
 
 def get_distances(target_coord, dog_coordinates):
-    key = (target_coord, dog_coordinates)
+    key = target_coord
     if key in cache:
         return cache[key]
     distances = []
