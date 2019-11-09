@@ -15,16 +15,9 @@ const Home = (props) => {
                 name={ "address" }
                 handleChange = { props.handleChange }
             />
-            {/* <ButtonFormat 
-                className={ "button search" }
-                buttonValue={ "Search" }            
-                handleSearch={ props.handleSearch }
-                // target={ "/address" }
-            /> */}
             <AddressButton  
                 className={ "button search" }
                 buttonValue={ "Search" }
-                handleSearch={ props.handleSearch }
             />
             </div>
         </div>

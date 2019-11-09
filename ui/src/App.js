@@ -14,19 +14,12 @@ class App extends React.Component {
       address: ""
     }
     this.handleChange = this.handleChange.bind(this);
-    this.handleSearch = this.handleSearch.bind(this);
   }
 
   handleChange = (event) => {
     this.setState({
       address: event.target.value
     });
-  }
-  handleSearch = (event) => {
-    // this.setState({
-    //   address: ""
-    // });
-    console.log(this.state.address);
   }
 
   render() {
@@ -41,7 +34,6 @@ class App extends React.Component {
                   <Home
                     address={ this.state.address }
                     handleChange={ this.handleChange }
-                    handleSearch={ this.handleSearch }
                   />
                 );
               }
@@ -51,7 +43,9 @@ class App extends React.Component {
             path="/address"
             render={() => {
                 return(
-                  <Map />
+                  <Map 
+                    address={ this.state.address }
+                  />
                 );
               }
             }
