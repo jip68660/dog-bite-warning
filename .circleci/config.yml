@@ -72,9 +72,9 @@ jobs:
           command: pytest
           working_directory: server
 
-  workflows:
-    version: 2
-    ui_and_server:
-      jobs:
-        - ui_build
-        - server_build
+workflows:
+  version: 2
+  ui_and_server:
+    jobs:
+      - ui_build
+      - server_build
