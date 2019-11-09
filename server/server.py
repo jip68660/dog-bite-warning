@@ -5,8 +5,6 @@ import googlegeo
 
 app = Flask(__name__)
 CORS(app)
-
-
 cache = {}
 
 
@@ -19,7 +17,6 @@ def get_distances(target_coord, dog_coordinates):
         distances.append((idx, googlegeo.get_distance(target_coord, coord)))
     cache[key] = distances
     return cache[key]
-    
 
 
 @app.route('/')
