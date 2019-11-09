@@ -5,8 +5,6 @@ import googlegeo
 
 app = Flask(__name__)
 CORS(app)
-
-
 cache = {}
 
 
@@ -19,12 +17,11 @@ def get_distances(target_coord, dog_coordinates):
         distances.append((idx, googlegeo.get_distance(target_coord, coord)))
     cache[key] = distances
     return cache[key]
-    
 
 
 @app.route('/')
 def get_dog_coordinates():
-    address = request.args.get('address')
+    address = request.args['address']
     target_coord = googlegeo.locate(address)
     target_coord = (target_coord[0], target_coord[1])
 
@@ -50,7 +47,10 @@ def get_dog_coordinates():
             count += 1
 
     return jsonify(
-        targetCoordinate={'lat': target_coord[0], 'long': target_coord[1]},
+        targetCoordinate={
+            'lat': target_coord[0],
+            'long': target_coord[1]
+        },
         nearestCoordinates=nearest10,
     )
 
