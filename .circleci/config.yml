@@ -39,7 +39,7 @@ jobs:
           working_directory: ui
 
   
-  backend_build:
+  server_build:
     docker:
       # specify the version you desire here
       - image: circleci/python
@@ -52,23 +52,32 @@ jobs:
     steps:
       - checkout
 
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "server/requirements.txt" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
+      # # Download and cache dependencies
+      # - restore_cache:
+      #     keys:
+      #       - v1-dependencies-{{ checksum "server/requirements.txt" }}
+      #       # fallback to using the latest cache if no exact match is found
+      #       - v1-dependencies-
 
       - run: 
           command: pip install -r requirements.txt
           working_directory: server
 
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "server/requirements.txt" }}
+      # - save_cache:
+      #     paths:
+      #       - node_modules
+      #     key: v1-dependencies-{{ checksum "server/requirements.txt" }}
 
       # run tests!
       - run: 
           command: pytest
           working_directory: server
+
+  workflows:
+    version: 2
+    ui:
+      jobs:
+        - ui_build
+    server:
+      jobs:
+        - server_build
