@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <div
+      className="caution"
+    >
+      <a>
+        CAUTION
+      </a>
+       DOG WILL BITE
+    </div>
+    <div
+      className="userInput"
+    >
+      <input
+        className="addressInput "
+        name="address"
+        onChange={[Function]}
+        placeholder="Please type address"
+        value=""
+      />
+      <button
+        className="button search"
+        onClick={[Function]}
+      >
+        Search
+      </button>
+    </div>
+  </div>
+</div>
+`;
