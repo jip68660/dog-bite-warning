@@ -1,7 +1,13 @@
 .marker {
     width: 30px;
     height: 30px;
+    border: none;
+    outline: none;
+    border-radius: 1rem;
     /* opacity: 0.5; */
+}
+.marker:focus {
+    outline: none;
 }
 .dog {
     background-image: url("../imgs/bark.png");
