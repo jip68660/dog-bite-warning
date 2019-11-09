@@ -1,4 +1,4 @@
-from flask import Flask, escape, request, jsonify
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 import incident
 import googlegeo
@@ -27,7 +27,7 @@ def get_dog_coordinates():
 
     dog_coordinates = incident.get_dog_coordinates()
 
-    distances = get_distances(target_coord, dog_coordinates) 
+    distances = get_distances(target_coord, dog_coordinates)
 
     # Sort by the second value of each tuple.
     distances.sort(key=lambda x: x[1])
