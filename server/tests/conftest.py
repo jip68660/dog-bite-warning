@@ -1,3 +1,14 @@
+import pytest
+
+from server import app
+
+
+@pytest.fixture
+def client():
+    return app.test_client()
+
+
+@pytest.fixture
 def example_result():
     return {
         "targetCoordinate": {"lat": 12.5, "long": 12.5},
