@@ -6,7 +6,7 @@ jobs:
   ui_build:
     docker:
       # specify the version you desire here
-      - image: circleci/node:7.10
+      - image: circleci/node:12.13
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -59,7 +59,10 @@ jobs:
       #       - v1-dependencies-
 
       - run: 
-          command: pip install -r requirements.txt
+          command: |
+              python -m venv venv
+              source venv/bin/activate
+              pip install -r requirements.txt
           working_directory: server
 
       # - save_cache:
@@ -69,7 +72,9 @@ jobs:
 
       # run tests!
       - run: 
-          command: pytest
+          command: |
+              source venv/bin/activate
+              pytest
           working_directory: server
 
 workflows:
