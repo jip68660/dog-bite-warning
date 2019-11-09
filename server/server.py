@@ -25,8 +25,16 @@ def get_dog_coordinates():
     target_coord = googlegeo.locate(address)
     target_coord = (target_coord[0], target_coord[1])
 
-    dog_coordinates = incident.get_dog_coordinates()
+    dog_info = incident.get_dog_info()
 
+    dog_coordinates = []
+    dog_activity = []
+    dog_date = []
+    for i in dog_info:
+        dog_coordinates.append(i[-6][-4:-2])
+        dog_activity.append(i[10:12])
+        dog_date.append(i[47])
+    
     distances = get_distances(target_coord, dog_coordinates) 
 
     # Sort by the second value of each tuple.
@@ -38,20 +46,29 @@ def get_dog_coordinates():
     # Pick nearest 10.
     count = 0
     nearest10 = []
+    listofactivity = []
+    listofdate = []
     for idx in indices:
         if count >= 10:
             break
         c = dog_coordinates[idx]
+        a = dog_activity[idx]
         if c[0] or c[1] is not None:
             nearest10.append({"lat": c[0], "long": c[1]})
-            count += 1
-
+        if a[0] or a[1] is not None:
+            listofactivity.append({"subtype": a[0], "activity_priority": a[1]})
+        listofdate.append(dog_date[idx])
+        count += 1
+ 
+        
     return jsonify(
         targetCoordinate={
             'lat': target_coord[0],
             'long': target_coord[1]
         },
         nearestCoordinates=nearest10,
+        dogactivity = listofactivity,
+        dogdate = listofdate
     )
 
 
