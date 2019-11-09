@@ -2,7 +2,6 @@
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
-version: 2
 jobs:
   ui_build:
     docker:
@@ -75,9 +74,7 @@ jobs:
 
   workflows:
     version: 2
-    ui:
+    ui_and_server:
       jobs:
         - ui_build
-    server:
-      jobs:
         - server_build
