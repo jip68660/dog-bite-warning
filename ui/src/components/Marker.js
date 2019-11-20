@@ -17,6 +17,7 @@ const Marker = (props) => {
             </button> 
             
             <Modal 
+                size="sm"
                 show={ show }
                 onHide={ handleClose }
                 animation={ false }
@@ -27,11 +28,6 @@ const Marker = (props) => {
                 <Modal.Body>
                     { props.lat + "...." + props.lng }
                 </Modal.Body>
-                <Modal.Footer>
-                    <button onClick={ handleClose }>
-                    Close
-                    </button>
-                </Modal.Footer>
             </Modal>
         </>
     );
