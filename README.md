@@ -37,8 +37,8 @@ python server.py
 [jihoon], [ray], [hyunchel]
 
 
-[0]: https://dog-warning.jihoon.dev
-[1]: https://dog-warning.raykim.dev
+[0]: https://dogwarning.jihoon.dev
+[1]: https://dogwarning.raykim.dev
 [2]: https://www.dallasopendata.com
 [jihoon]: https://github.com/jip68660
 [ray]: https://github.com/kimraymond825
